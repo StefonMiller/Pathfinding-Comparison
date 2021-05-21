@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="css/style.css">
+        <title>Maze solver</title>
+    </head>
+    <body>
+        <script src="js/dfs.js"></script>
+        <script src="js/mazeSolver.js"></script>
+        <div>  
+            <h1>Pathfinding algorithm comparison</h1>
+            <label for="xDim">Maze width(10 to 35):</label>
+            <input type="text" id="xDim" name="xDim">
+            <label for="yDim">Maze height(10 to 100):</label>
+            <input type="text" id="yDim" name="yDim">
+            <button id="start">Start</button>
+        </div>
+        <br><br><br>
+        <div class="mazeDiv">
+            <h2>DFS</h2>
+            <table>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        <div class="mazeDiv">
+            <h2>BFS</h2>
+            <table>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        <div class="mazeDiv">
+            <h2>A*</h2>
+            <table>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>

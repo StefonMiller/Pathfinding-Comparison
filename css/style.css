@@ -1,0 +1,58 @@
+div
+{
+    text-align: center;
+
+}
+input
+{
+    margin:5px;
+    width: 5%;
+}
+
+div.mazeDiv
+{
+    width: 33%;
+    display: inline-table;
+    text-align: center;
+    margin: auto;
+}
+table
+{
+    border: 2px solid black;
+    border-collapse:collapse;
+    margin: auto;
+    width: auto;
+}
+
+td
+{
+    background-clip: padding-box;
+    width:10px;
+    height:10px;
+}
+td.right
+{
+    border-right: 2px solid black;
+    background-clip: padding-box;
+}
+td.bottom
+{
+    border-bottom: 2px solid black;
+    background-clip: padding-box;
+}
+
+td.path
+{
+    background-color: orange;
+    background-clip: padding-box;
+}
+td.start
+{
+    background-color: lime;
+    background-clip: padding-box;
+}
+td.end
+{
+    background-color:red;
+    background-clip: padding-box;
+}
