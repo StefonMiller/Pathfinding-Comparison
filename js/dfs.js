@@ -8,7 +8,6 @@ async function dfs(x, y, time)
     let maze = document.getElementsByClassName("mazeDiv")[0];
     let mazeTable = maze.getElementsByTagName("table")[0];
     let counter = maze.getElementsByTagName("h4")[0];
-
     if(typeof dfs.steps == 'undefined') 
     {
         dfs.steps = 0;
@@ -39,22 +38,22 @@ async function dfs(x, y, time)
     if((!res) && (x != mazeTable.rows[y].cells.length - 1) && (!mazeTable.rows[y].cells[x+1].classList.contains("visited")) && (!mazeTable.rows[y].cells[x].classList.contains("right")))
     {
         await sleep(time);
-        res = await dfs(x+1, y);
+        res = await dfs(x+1, y, time);
     }
     if((!res) && (x != 0) && (!mazeTable.rows[y].cells[x-1].classList.contains("visited")) && (!mazeTable.rows[y].cells[x-1].classList.contains("right")))
     {
         await sleep(time);
-        res = await dfs(x-1, y);
+        res = await dfs(x-1, y, time);
     }
     if((!res) && (y != mazeTable.rows.length - 1) && (!mazeTable.rows[y+1].cells[x].classList.contains("visited")) && (!mazeTable.rows[y].cells[x].classList.contains("bottom")))
     {
         await sleep(time);
-        res = await dfs(x, y+1);
+        res = await dfs(x, y+1, time);
     }
     if((!res) && (y != 0) && (!mazeTable.rows[y-1].cells[x].classList.contains("visited")) && (!mazeTable.rows[y-1].cells[x].classList.contains("bottom")))
     {
         await sleep(time);
-        res = await dfs(x, y-1);
+        res = await dfs(x, y-1, time);
     }
 
     //Before returning, remove path from the classlist and add start if res is true(solution found)

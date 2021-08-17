@@ -32,7 +32,6 @@ async function bfs(startX, startY, time)
 
     while(mazeQueue.length != 0)
     {
-        console.log(mazeQueue);
         bfs.steps++;
         counter.innerHTML = "Steps: " + bfs.steps;
         let x = mazeQueue[0].cellIndex;
