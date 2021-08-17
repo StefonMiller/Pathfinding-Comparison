@@ -7,6 +7,7 @@
     <body>
         <script src="js/dfs.js"></script>
         <script src="js/bfs.js"></script>
+        <script src="js/astar.js"></script>
         <script src="js/mazeSolver.js"></script>
         <div>  
             <h1>Pathfinding algorithm comparison</h1>
@@ -14,9 +15,14 @@
             <input type="text" id="xDim" name="xDim">
             <label for="yDim">Maze height(10 to 100):</label>
             <input type="text" id="yDim" name="yDim">
+            <label for="delay">Delay (ms)</label>
+            <input type="text" id="delay" name="delay">
+            <br>
+            <br>
             <button id="start">Start</button>
         </div>
-        <br><br><br>
+        <br>
+        <br>
         <div class="mazeDiv">
             <h2>DFS</h2>
             <h4>Steps: </h4>

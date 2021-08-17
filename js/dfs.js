@@ -3,7 +3,7 @@
  * @param {} x current x value
  * @param {*} y current y value
  */
-async function dfs(x, y)
+async function dfs(x, y, time)
 {
     let maze = document.getElementsByClassName("mazeDiv")[0];
     let mazeTable = maze.getElementsByTagName("table")[0];
@@ -24,7 +24,6 @@ async function dfs(x, y)
     //The maze is complete if we reach the end
     if(mazeTable.rows[y].cells[x].classList.contains("end"))
     { 
-        console.log("Finished");
         return true;
     }
 
@@ -39,22 +38,22 @@ async function dfs(x, y)
 
     if((!res) && (x != mazeTable.rows[y].cells.length - 1) && (!mazeTable.rows[y].cells[x+1].classList.contains("visited")) && (!mazeTable.rows[y].cells[x].classList.contains("right")))
     {
-        await sleep(200);
+        await sleep(time);
         res = await dfs(x+1, y);
     }
     if((!res) && (x != 0) && (!mazeTable.rows[y].cells[x-1].classList.contains("visited")) && (!mazeTable.rows[y].cells[x-1].classList.contains("right")))
     {
-        await sleep(200);
+        await sleep(time);
         res = await dfs(x-1, y);
     }
     if((!res) && (y != mazeTable.rows.length - 1) && (!mazeTable.rows[y+1].cells[x].classList.contains("visited")) && (!mazeTable.rows[y].cells[x].classList.contains("bottom")))
     {
-        await sleep(200);
+        await sleep(time);
         res = await dfs(x, y+1);
     }
     if((!res) && (y != 0) && (!mazeTable.rows[y-1].cells[x].classList.contains("visited")) && (!mazeTable.rows[y-1].cells[x].classList.contains("bottom")))
     {
-        await sleep(200);
+        await sleep(time);
         res = await dfs(x, y-1);
     }
 

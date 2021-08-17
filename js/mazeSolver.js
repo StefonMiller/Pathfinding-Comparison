@@ -10,20 +10,30 @@ var newSetNum;
  */
 function validate()
 {
+    bfs.steps = 0;
+    dfs.steps = 0;
+    astar.steps = 0;
     //Get x and y dimensions for the grid from the doc and parse them to integers
     let xDim = document.getElementById("xDim");
     let yDim = document.getElementById("yDim");
+    let delay = document.getElementById("delay");
     let x = parseInt(xDim.value, 10);
     let y = parseInt(yDim.value, 10);
+    let time = parseInt(delay.value, 10);
     xDim.value = "";
     yDim.value = "";
+    time.value = "";
 
     //Ensure data is an integer and between certain boundaries for the maze
     if(x == "" || y == "")
     {
-        alert("Please fill both fields");
+        alert("Please fill all fields");
         return;
 
+    }
+    if(time == "")
+    {
+        time = 200;
     }
     if(Number.isInteger(x) && Number.isInteger(y))
     {
@@ -31,8 +41,8 @@ function validate()
         {
             initMazes(x, y);
             fillMazes(x, y);
-            //dfs(startingX, startingY);
-            bfs(startingX, startingY);
+            //dfs(startingX, startingY, time);
+            bfs(startingX, startingY, time);
         }
         else
         {
@@ -42,7 +52,7 @@ function validate()
     }
     else
     {
-        alert("Please enter an integer for both fields");
+        alert("Please enter an integer for height and width fields");
         return;
     }
 
