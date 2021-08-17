@@ -13,7 +13,7 @@ async function dfs(x, y, time)
         dfs.steps = 0;
     }
     dfs.steps++;
-    counter.innerHTML = "Steps: " + dfs.steps;
+    counter.innerHTML = "Cells checked: " + dfs.steps;
     
     //Mark each cell as visited as we go
     if(!mazeTable.rows[y].cells[x].classList.contains("visited"))

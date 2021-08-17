@@ -41,8 +41,9 @@ function validate()
         {
             initMazes(x, y);
             fillMazes(x, y);
-            dfs(startingX, startingY, time);
-            bfs(startingX, startingY, time);
+            //dfs(startingX, startingY, time);
+            //bfs(startingX, startingY, time);
+            astar(startingX, startingY, time);
         }
         else
         {
