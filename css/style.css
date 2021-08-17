@@ -48,11 +48,16 @@ td.path
 }
 td.start
 {
-    background-color: lime;
+    background-color: blue;
     background-clip: padding-box;
 }
 td.end
 {
     background-color:red;
+    background-clip: padding-box;
+}
+td.sol
+{
+    background-color: lime;
     background-clip: padding-box;
 }

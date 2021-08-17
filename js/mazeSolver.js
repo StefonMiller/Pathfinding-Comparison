@@ -31,7 +31,8 @@ function validate()
         {
             initMazes(x, y);
             fillMazes(x, y);
-            dfs(startingX, startingY);
+            //dfs(startingX, startingY);
+            bfs(startingX, startingY);
         }
         else
         {
