@@ -14,18 +14,13 @@ function validate()
     dfs.steps = 0;
     astar.steps = 0;
     //Get x and y dimensions for the grid from the doc and parse them to integers
-    let xDim = document.getElementById("xDim");
-    let yDim = document.getElementById("yDim");
+    let dim = document.getElementById("dim");
     let delay = document.getElementById("delay");
-    let x = parseInt(xDim.value, 10);
-    let y = parseInt(yDim.value, 10);
+    let x = parseInt(dim.value, 10);
     let time = parseInt(delay.value, 10);
-    xDim.value = "";
-    yDim.value = "";
-    time.value = "";
 
     //Ensure data is an integer and between certain boundaries for the maze
-    if(x == "" || y == "")
+    if(x == "")
     {
         alert("Please fill all fields");
         return;
@@ -35,19 +30,19 @@ function validate()
     {
         time = 200;
     }
-    if(Number.isInteger(x) && Number.isInteger(y))
+    if(Number.isInteger(x))
     {
-        if((10 <= x && x <= 35) && (10 <= y && y <= 100))
+        if((10 <= x && x <= 35))
         {
-            initMazes(x, y);
-            fillMazes(x, y);
-            //dfs(startingX, startingY, time);
-            //bfs(startingX, startingY, time);
-            astar(startingX, startingY, time);
+            initMazes(x);
+            fillMazes(x);
+            dfs(startingX, startingY, time);
+            bfs(startingX, startingY, time);
+            astar(startingX, startingY, endingX, endingY, time);
         }
         else
         {
-            alert("Please enter a number between 10 and 35 for the width and a number between 10 and 100 for the height");
+            alert("Please enter a number between 10 and 35 for the height and width");
         }
         
     }
@@ -71,16 +66,16 @@ function init(){
 
 /**
  * Create the rows for the maaze
- * @param {} y number of vertical cells in the maze
+ * @param {} x the number of rows/columns in the maze
  */
-function initMazes(x, y)
+function initMazes(x)
 {
     let mazes = document.getElementsByClassName("mazeDiv");
     for(maze of mazes)
     {
         //For each maze, create a new tbody and fill it with new cells
         let new_tbody = document.createElement('tbody')
-        for(i = 0; i < y; i++)
+        for(i = 0; i < x; i++)
         {
             new_tbody.insertRow();
             for(j = 0; j < x; j++)
@@ -99,10 +94,9 @@ function initMazes(x, y)
 
 /**
  * Creates the maze itself to be used by all tables
- * @param {} x width of maze
- * @param {*} y height of maze
+ * @param {} x width and height of the maze
  */
-function fillMazes(x, y)
+function fillMazes(x)
 {
     finishedTable = generateMaze(x);
     //Remove the set numbers from the table
@@ -114,7 +108,7 @@ function fillMazes(x, y)
         }
     }
     //Create the start and end points for the maze randomly
-    finishedTable = generateOutsidePoints(x, y, finishedTable);
+    finishedTable = generateOutsidePoints(x, finishedTable);
     let mazes = document.getElementsByClassName("mazeDiv");
     //Propogate the maze to all tables
     for(maze of mazes)
@@ -283,12 +277,11 @@ function randHorizontalJoin(sets, currRow)
 
 /**
  * Generates a point on the outside of the maze and assigns it to be either entry or exit
- * @param {} x width of maxe
- * @param {*} y height of maze
+ * @param {} x height and width of maze
  * @param {*} table Table representing the maze
  * @return Table with start and end points
  */
-function generateOutsidePoints(x, y, table)
+function generateOutsidePoints(x, table)
 {
     //Create a random entry point
     let axisSelection = Math.random();
@@ -301,7 +294,7 @@ function generateOutsidePoints(x, y, table)
         //If the x value is 0 or max, we have y options
         if(startingX == 0 || startingX == x)
         {
-            startingY = Math.floor(Math.random() * (y - 1));
+            startingY = Math.floor(Math.random() * (x - 1));
         }
         //If the x value is not 0 or max, there are only 2 values to choose from: 0 or y-1
         else
@@ -309,16 +302,16 @@ function generateOutsidePoints(x, y, table)
             let yCoord = Math.random();
             if(yCoord > .5)
             {
-                startingY = y - 1;
+                startingY = x - 1;
             }
         }
     }
     else
     {
         //Generate the Y value first
-        startingY = Math.floor(Math.random() * (y - 1));
+        startingY = Math.floor(Math.random() * (x - 1));
         //If the Y value is 0 or y, we have x options for the x axis
-        if(startingY == 0 || startingY == y)
+        if(startingY == 0 || startingY == x)
         {
             startingX = Math.floor(Math.random() * (x - 1));
         }
@@ -338,7 +331,7 @@ function generateOutsidePoints(x, y, table)
     currCell.className += " start";
     //Once we have the starting point, create an ending point on the opposite side of the maze
     endingX = (x - 1) - startingX;
-    endingY = (y - 1) - startingY;
+    endingY = (x - 1) - startingY;
     //Render the end point as well
     currCell = table.rows[endingY].cells[endingX];
     currCell.className += " end";
