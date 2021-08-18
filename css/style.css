@@ -1,7 +1,5 @@
 *
 {
-    background-color: #191919;
-    color: #9E9E9E;
 	font-family: arial, sans-serif;
 }
 
@@ -26,7 +24,7 @@ div.mazeDiv
 }
 table
 {
-    border: 2px solid #9E9E9E;
+    border: 2px solid #282828;
     border-collapse:collapse;
     margin: auto;
     width: auto;
@@ -34,19 +32,18 @@ table
 
 td
 {
-    background-color: #282828;
     background-clip: padding-box;
     width:10px;
     height:10px;
 }
 td.right
 {
-    border-right: 2px solid #9E9E9E;
+    border-right: 2px solid #282828;
     background-clip: padding-box;
 }
 td.bottom
 {
-    border-bottom: 2px solid #9E9E9E;
+    border-bottom: 2px solid #282828;
     background-clip: padding-box;
 }
 
@@ -69,4 +66,36 @@ td.sol
 {
     background-color: rgb(106, 255, 106);
     background-clip: padding-box;
+}
+
+button 
+{
+    color:white;
+    background-color: #2d89ef;
+    border: 2px solid #2d89ef;
+    padding: 8px 16px;
+    font-size: 18px;
+    border-radius: 8px;
+}
+
+button:hover 
+{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.15) 0 0);
+}
+
+footer 
+{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+    background-color: #2d89ef;
+}
+
+span
+{
+    width:50%;
+    padding:15%;
 }

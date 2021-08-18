@@ -2,6 +2,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <title>Maze solver</title>
     </head>
     <body>
@@ -12,12 +13,16 @@
         <div>  
             <h1>Pathfinding algorithm comparison</h1>
             <p>This website generates mazes utilizing Eller's algorithm <br>and illustrates the differences between DFS, BFS, and A*<br> when solving them.</p>
-            <br><br><br><br>
-            <label for="xDim">Maze dimensions(10 to 35):</label>
-            <input type="text" id="dim" name="dim">
-            <label for="delay">Delay (ms)</label>
-            <input type="text" id="delay" name="delay">
-            <button id="start">Start</button>
+            <br><br>
+            
+            <div>
+                <label for="xDim">Maze dimensions:</label>
+                <input class="w3-border" type="text" id="dim" name="dim" placeholder="10 to 35">
+                <label for="delay">Delay</label>
+                <input class="w3-border"type="text" id="delay" name="delay" placeholder="ms">
+                <br><br>
+                <button id="start" >Start</button>
+            </div>
         </div>
         <br>
         <br>
@@ -45,5 +50,9 @@
                 </tbody>
             </table>
         </div>
+        <footer>
+            <p><span>Made by Stefon Miller</span><span><a href="https://github.com/StefonMiller/Pathfinding-Comparison" target="_blank">View on GitHub</a></span></p>
+        </footer>
     </body>
+    
 </html>

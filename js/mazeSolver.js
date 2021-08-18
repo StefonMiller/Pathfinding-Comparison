@@ -8,7 +8,7 @@ var newSetNum;
 /**
  * Validates form data
  */
-function validate()
+async function validate()
 {
     bfs.steps = 0;
     dfs.steps = 0;
@@ -35,10 +35,12 @@ function validate()
         if((10 <= x && x <= 35))
         {
             initMazes(x);
-            fillMazes(x);
+            fillMazes(x);  
+
             dfs(startingX, startingY, time);
             bfs(startingX, startingY, time);
             astar(startingX, startingY, endingX, endingY, time);
+
         }
         else
         {
